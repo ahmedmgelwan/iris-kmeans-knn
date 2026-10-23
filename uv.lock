@@ -811,6 +811,7 @@ name = "iris-classifer"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "logging" },
     { name = "mlflow" },
     { name = "pandas" },
     { name = "scikit-learn" },
@@ -824,6 +825,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "logging", specifier = ">=0.4.9.6" },
     { name = "mlflow", specifier = ">=3.17.2" },
     { name = "pandas", specifier = ">=3.1.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
@@ -939,6 +941,12 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e9/2d/8982c1fb7926da5bb7ed60318c3665b5c3f941447271ac982960a11b8637/kiwisolver-1.5.1-cp315-cp315t-win_amd64.whl", hash = "sha256:cb6fae641357ed2f6e533c0d3c6504a4a5703621a50c89459e46051d56b61140", size = 75379, upload-time = "2026-08-28T10:28:06.307Z" },
     { url = "https://files.pythonhosted.org/packages/07/78/ba7b6dfa1708b82b373ac056928a30c545d5c1a627df9839dcec3c6c1881/kiwisolver-1.5.1-cp315-cp315t-win_arm64.whl", hash = "sha256:b390aec180a7c054919c04898835e1c77bced23ea8383eb2c570213bf25d1a86", size = 73011, upload-time = "2026-08-28T10:28:07.578Z" },
 ]
+
+[[package]]
+name = "logging"
+version = "0.4.9.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/93/4b/979db9e44be09f71e85c9c8cfc42f258adfb7d93ce01deed2788b2948919/logging-0.4.9.6.tar.gz", hash = "sha256:26f6b50773f085042d301085bd1bf5d9f3735704db9f37c1ce6d8b85c38f2417", size = 96029, upload-time = "2013-06-04T23:43:22.086Z" }
 
 [[package]]
 name = "mako"

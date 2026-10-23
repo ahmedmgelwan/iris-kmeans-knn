@@ -220,7 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # data files
-data/
+data/*
 
 # assets
 assets/*
