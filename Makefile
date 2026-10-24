@@ -4,4 +4,8 @@ data_transformations:
 
 model_build: data_transformations
 	@echo "Building model..."
-	python -m src.model.model
+	python -m src.pipelines.model_training
+
+run_api:
+	@echo "Running FastAPI server..."
+	uvicorn src.api.main:app --reload

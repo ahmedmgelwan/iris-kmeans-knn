@@ -823,6 +823,7 @@ name = "iris-classifer"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "fastapi" },
     { name = "logging" },
     { name = "mlflow" },
     { name = "optuna" },
@@ -838,6 +839,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "fastapi", specifier = ">=0.161.1" },
     { name = "logging", specifier = ">=0.4.9.6" },
     { name = "mlflow", specifier = ">=3.17.2" },
     { name = "optuna", specifier = ">=5.0.0" },
