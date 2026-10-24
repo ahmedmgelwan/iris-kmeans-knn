@@ -51,26 +51,16 @@ def make_transfomation(X, y, numerical_features) -> tuple:
 
 
 
-def save_transformation_pipelines(X, y, feature_pipeline, target_pipeline, feature_pipeline_path, target_pipeline_path) -> None:
+
+def save_transformations(X, y, features_transformed_path, target_transformed_path, feature_pipeline, target_pipeline, feature_pipeline_path, target_pipeline_path) -> bool:
     """
     Saves the transformed data and transformation pipelines for features and target variable to disk.
     """
-
+    joblib.dump(X, features_transformed_path)
+    joblib.dump(y, target_transformed_path)
     joblib.dump(feature_pipeline, feature_pipeline_path)
     joblib.dump(target_pipeline, target_pipeline_path)
 
     logger.info(f"Transformed data and pipelines saved successfully to {feature_pipeline_path} and {target_pipeline_path}.")
 
     return True
-
-if __name__ == "__main__":
-    from src.config import config
-    import pandas as pd
-
-    data = pd.read_csv(config.PREPROCESSED_DATASET_PATH)
-    X = data.drop(columns=['class'])
-    y = data['class']
-    numerical_features = X.select_dtypes(include='number').columns.tolist()
-
-    X_transformed, y_transformed, feature_pipeline, target_pipeline = make_transfomation(X, y, numerical_features)
-    save_transformation_pipelines(X_transformed, y_transformed, feature_pipeline, target_pipeline, config.FEATURE_PIPELINE_PATH, config.TARGET_PIPELINE_PATH)

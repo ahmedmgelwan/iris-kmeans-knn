@@ -21,9 +21,3 @@ def save_preprocessed_data(data: pd.DataFrame, path: str) -> None:
     logger.info(f"Saving preprocessed data to {path}.")
     data.to_csv(path, index=False)
 
-
-if __name__ == "__main__":
-    from src.config import config
-    data = pd.read_csv(config.RAW_DATASET_PATH)
-    preprocessed_data = preprocess_data(data)
-    save_preprocessed_data(preprocessed_data, config.PREPROCESSED_DATASET_PATH)
