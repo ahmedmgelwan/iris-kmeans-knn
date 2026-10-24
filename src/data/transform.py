@@ -1,3 +1,4 @@
+from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
@@ -13,13 +14,11 @@ def transform_features(X, numerical_features) -> tuple:
     - simple imputation for missing values
     - standard scaling for numerical features
     """
-
-    transformer = ColumnTransformer(
-        transformers=[
-            ('imputer', SimpleImputer(), numerical_features),
-            ('scaler', StandardScaler(), numerical_features)
-        ]
+    transformer = make_pipeline(
+        SimpleImputer(strategy='mean'),
+        StandardScaler()
     )
+
     X_transformed = transformer.fit_transform(X[numerical_features])
     logger.info("Feature transformation completed successfully.")
     return X_transformed, transformer
