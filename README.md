@@ -1,24 +1,99 @@
-# End to End IRIS Classification
-In this branch I practice basics of `Machine Learning Operation` and build my skills on it.
+# Iris Classification API
 
-## Project Structure
-- src:
-    - data
-- data
-- tests
-- assets
+This project trains a K-Nearest Neighbors (KNN) model on the Iris dataset and
+serves predictions through a FastAPI application.
 
-## Using the project
-```python
-from src.config import config
-import pandas as pd
+## Project structure
 
-data = pd.read_csv(config.PREPROCESSED_DATASET_PATH)
-X = data.drop(columns=['class'])
-y = data['class']
-numerical_features = X.select_dtypes(include='number').columns.tolist()
+- `src/data/`: data loading, preprocessing, and transformation
+- `src/model/`: model training and hyperparameter tuning
+- `src/pipelines/`: data transformation and model training pipelines
+- `src/api/`: FastAPI application and request/response schemas
+- `tests/`: project tests
+- `data/`: dataset and generated transformation files
+- `assets/`: trained model and transformation pipelines
 
-X_transformed, y_transformed, feature_pipeline, target_pipeline = make_transfomation(X, y, numerical_features)
-print(X_transformed)
-save_transformation_pipelines(X_transformed, y_transformed, feature_pipeline, target_pipeline, config.FEATURE_PIPELINE_PATH, config.TARGET_PIPELINE_PATH)
+## Requirements
+
+- Python 3.14
+- `uv`
+
+Dependencies are defined in `pyproject.toml` and locked in `uv.lock`.
+
+## Setup
+
+Install the project dependencies:
+
+```bash
+uv sync
+```
+
+## Run the tests
+
+```bash
+uv run pytest
+```
+
+## Build the data transformations and model
+
+Run the data transformation pipeline:
+
+```bash
+make data_transformations
+```
+
+Build the model after transforming the data:
+
+```bash
+make model_build
+```
+
+## Run the API
+
+```bash
+make run_api
+```
+
+The API runs locally at:
+
+```text
+http://127.0.0.1:8000
+```
+
+### Health check
+
+```http
+GET /health
+```
+
+Example response:
+
+```json
+{
+  "status": "healthy"
+}
+```
+
+### Prediction
+
+```http
+POST /predict
+```
+
+Request body:
+
+```json
+{
+  "sepal_width": 3.5,
+  "petal_length": 1.4,
+  "petal_width": 0.2
+}
+```
+
+The response contains the predicted Iris class:
+
+```json
+{
+  "class_label": "Iris-setosa"
+}
 ```
