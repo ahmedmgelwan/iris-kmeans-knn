@@ -4,7 +4,6 @@ version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
     "fastapi>=0.161.1",
-    "logging>=0.4.9.6",
     "mlflow>=3.17.2",
     "optuna>=5.0.0",
     "pandas>=3.1.0",
@@ -14,5 +13,10 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.16.0",
     "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
