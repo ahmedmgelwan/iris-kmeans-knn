@@ -1,6 +1,7 @@
 import os
 from dataclasses import dataclass
 
+
 @dataclass
 class Config:
     RAW_DATASET_PATH: str = os.path.join(os.getcwd(), "data", "iris.csv")

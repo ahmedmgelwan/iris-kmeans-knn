@@ -1,6 +1,8 @@
-from fastapi import FastAPI
 import joblib
+from fastapi import FastAPI
+
 from src.config import config
+
 from .schema import IRISFeatures, IRISTarget
 
 app = FastAPI()

@@ -1,10 +1,9 @@
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.impute import SimpleImputer
-from sklearn.compose import ColumnTransformer
 import joblib
-from src.logger import setup_logger
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 
+from src.logger import setup_logger
 
 logger = setup_logger(__name__)
 

@@ -1,6 +1,7 @@
 import os
+
 import pandas as pd
-from src.config import config
+
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)

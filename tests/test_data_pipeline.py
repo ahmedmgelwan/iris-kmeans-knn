@@ -1,6 +1,8 @@
-from src.data import ingest, preprocess, transform
-from src.config import config
 import pandas as pd
+
+from src.config import config
+from src.data import ingest, preprocess, transform
+
 
 def test_ingest_data():
     data = ingest.load_data(config.RAW_DATASET_PATH)

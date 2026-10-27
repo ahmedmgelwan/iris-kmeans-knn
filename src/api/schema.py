@@ -1,5 +1,7 @@
-from pydantic import BaseModel, Field
 from typing import Literal
+
+from pydantic import BaseModel, Field
+
 
 class IRISFeatures(BaseModel):
     sepal_width: float = Field(..., description="Sepal width of the iris flower", gt=0)

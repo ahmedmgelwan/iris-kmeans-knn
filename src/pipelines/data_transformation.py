@@ -1,7 +1,7 @@
+from src.config import config
 from src.data.ingest import load_data
 from src.data.preprocess import preprocess_data, save_preprocessed_data
 from src.data.transform import make_transfomation, save_transformations
-from src.config import config
 
 
 def transform_data():

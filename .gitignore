@@ -228,4 +228,4 @@ assets/*
 # mlflow
 mlruns/*
 mlflow.db
-mlfartifacts/*
+mlfartifacts/

@@ -1,7 +1,7 @@
-from src.model.model import IRISClassificationModel
 from sklearn.neighbors import KNeighborsClassifier
 
 from src.config import config
+from src.model.model import IRISClassificationModel
 
 
 def train_model():

@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
-from sklearn.model_selection import train_test_split
-import joblib
-from src.config import config
-from sklearn.model_selection import cross_val_score
-import optuna
-import pandas as pd
-import mlflow
 
+import joblib
+import mlflow
+import optuna
+from sklearn.model_selection import cross_val_score
+
+from src.config import config
 from src.logger import setup_logger
+
 mlflow.set_tracking_uri(config.MLFLOW_TRACKING_URI)
 
 logger = setup_logger(__name__)
@@ -16,12 +16,10 @@ class Model(ABC):
     @abstractmethod
     def fit(self, X, y):
         """Fit the model with default parameters to the  data and get the mean cross-validation score."""
-        pass
 
     @abstractmethod
     def predict(self, X):
         """Make predictions using the fitted model."""
-        pass
 
     @abstractmethod
     def tune(self, X, y):
