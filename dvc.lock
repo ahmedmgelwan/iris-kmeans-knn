@@ -1,0 +1,70 @@
+schema: '2.0'
+stages:
+  transform_data:
+    cmd: uv run python -m src.pipelines.data_transformation
+    deps:
+    - path: data/iris.csv
+      hash: md5
+      md5: 2c53a0cfddf0e0dbc6b138912da02ec6
+      size: 4607
+    - path: src/config.py
+      hash: md5
+      md5: 8a24e8019c9118415d229288e2cf0c78
+      size: 1076
+    - path: src/data/ingest.py
+      hash: md5
+      md5: cb6af072d0be077e758075f0c59e725b
+      size: 729
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: 670f1ab3cb49ee2b9a22d21f7de51a72
+      size: 634
+    - path: src/data/transform.py
+      hash: md5
+      md5: fc2706d3a4895ec9d36a42a993dc92ac
+      size: 2273
+    - path: src/pipelines/data_transformation.py
+      hash: md5
+      md5: 28c2fdea2ff5e5bcb9f8f442f68acbc9
+      size: 1080
+    outs:
+    - path: assets/feature_pipeline.pkl
+      hash: md5
+      md5: 7687c4f34e11dd0af7926ae2d34e941b
+      size: 1353
+    - path: assets/target_pipeline.pkl
+      hash: md5
+      md5: e0f53d7da5409edd7159679c0ad3ac07
+      size: 522
+    - path: data/features_transformed.pkl
+      hash: md5
+      md5: ae7f30e11f8d5d17321f4dcf38acec05
+      size: 3825
+    - path: data/preprocessed_iris.csv
+      hash: md5
+      md5: 77c7bd04ca5b23afdb087bd80d39e181
+      size: 3993
+    - path: data/target_transformed.pkl
+      hash: md5
+      md5: 7e06d80388e6a30fd01729142b8814fb
+      size: 1425
+  train_model:
+    cmd: uv run python -m src.pipelines.model_training
+    deps:
+    - path: src/config.py
+      hash: md5
+      md5: 8a24e8019c9118415d229288e2cf0c78
+      size: 1076
+    - path: src/model/model.py
+      hash: md5
+      md5: b180222049dd2dac82c01879124244f4
+      size: 6586
+    - path: src/pipelines/model_training.py
+      hash: md5
+      md5: 90a2ad44a6c1009953328de0e3e9d94d
+      size: 739
+    outs:
+    - path: assets/iris_model.pkl
+      hash: md5
+      md5: f0045314118925cacda8203704d6c999
+      size: 11670

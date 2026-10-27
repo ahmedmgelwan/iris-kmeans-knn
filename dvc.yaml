@@ -1,0 +1,25 @@
+stages:
+  transform_data:
+    cmd: uv run python -m src.pipelines.data_transformation
+    deps:
+      - src/pipelines/data_transformation.py
+      - src/config.py
+      - src/data/ingest.py
+      - src/data/transform.py
+      - src/data/preprocess.py
+      - data/iris.csv
+    outs:
+      - data/preprocessed_iris.csv
+      - data/features_transformed.pkl
+      - data/target_transformed.pkl
+      - assets/feature_pipeline.pkl
+      - assets/target_pipeline.pkl
+
+  train_model:
+    cmd: uv run python -m src.pipelines.model_training
+    deps:
+      - src/pipelines/model_training.py
+      - src/config.py
+      - src/model/model.py
+    outs:
+      - assets/iris_model.pkl
