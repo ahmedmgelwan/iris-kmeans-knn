@@ -5,4 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say Hello
-        run: echo "Hello, World!"
+        run: echo "Committed!"
+
+  test_code:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Testing 
+          run: pytest tests/
