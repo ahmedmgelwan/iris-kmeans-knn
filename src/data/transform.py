@@ -7,20 +7,19 @@ from src.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def transform_features(X, numerical_features) -> tuple:
     """
     Transforms the features of the dataset by applying:
     - simple imputation for missing values
     - standard scaling for numerical features
     """
-    transformer = make_pipeline(
-        SimpleImputer(strategy='mean'),
-        StandardScaler()
-    )
+    transformer = make_pipeline(SimpleImputer(strategy="mean"), StandardScaler())
 
     X_transformed = transformer.fit_transform(X[numerical_features])
     logger.info("Feature transformation completed successfully.")
     return X_transformed, transformer
+
 
 def transform_target(y) -> tuple:
     """
@@ -46,11 +45,16 @@ def make_transfomation(X, y, numerical_features) -> tuple:
     return X_transformed, y_transformed, feature_pipeline, target_pipeline
 
 
-
-
-
-
-def save_transformations(X, y, features_transformed_path, target_transformed_path, feature_pipeline, target_pipeline, feature_pipeline_path, target_pipeline_path) -> bool:
+def save_transformations(
+    X,
+    y,
+    features_transformed_path,
+    target_transformed_path,
+    feature_pipeline,
+    target_pipeline,
+    feature_pipeline_path,
+    target_pipeline_path,
+) -> bool:
     """
     Saves the transformed data and transformation pipelines for features and target variable to disk.
     """
@@ -59,6 +63,8 @@ def save_transformations(X, y, features_transformed_path, target_transformed_pat
     joblib.dump(feature_pipeline, feature_pipeline_path)
     joblib.dump(target_pipeline, target_pipeline_path)
 
-    logger.info(f"Transformed data and pipelines saved successfully to {feature_pipeline_path} and {target_pipeline_path}.")
+    logger.info(
+        f"Transformed data and pipelines saved successfully to {feature_pipeline_path} and {target_pipeline_path}."
+    )
 
     return True

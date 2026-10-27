@@ -11,14 +11,21 @@ def transform_data():
     target_column = config.TARGET_COLUMN
     X = processed_data.drop(columns=[target_column])
     y = processed_data[target_column]
-    numerical_features = X.select_dtypes(include='number').columns.tolist()
+    numerical_features = X.select_dtypes(include="number").columns.tolist()
 
-    X_transformed, y_transformed, feature_pipeline, target_pipeline = make_transfomation(X, y, numerical_features)
-    save_transformations(X_transformed, y_transformed, 
-                        config.FEATURES_TRANSFORMED_PATH,
-                        config.TARGET_TRANSFORMED_PATH,
-                        feature_pipeline, target_pipeline, 
-                        config.FEATURE_PIPELINE_PATH,
-                        config.TARGET_PIPELINE_PATH)
+    X_transformed, y_transformed, feature_pipeline, target_pipeline = (
+        make_transfomation(X, y, numerical_features)
+    )
+    save_transformations(
+        X_transformed,
+        y_transformed,
+        config.FEATURES_TRANSFORMED_PATH,
+        config.TARGET_TRANSFORMED_PATH,
+        feature_pipeline,
+        target_pipeline,
+        config.FEATURE_PIPELINE_PATH,
+        config.TARGET_PIPELINE_PATH,
+    )
+
 
 transform_data()
