@@ -16,6 +16,7 @@ class Config:
     MODEL_PATH: str = os.path.join(os.getcwd(), "assets", "iris_model.pkl")
     RANDOM_STATE: int = 42
     MODEL_MAIN_METRIC: str = "accuracy"
+    MLFLOW_TRACKING_URI = "http://localhost:5000"
 
 
 config = Config()

@@ -224,3 +224,8 @@ data/*
 
 # assets
 assets/*
+
+# mlflow
+mlruns/*
+mlflow.db
+mlfartifacts/*

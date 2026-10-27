@@ -48,6 +48,29 @@ Build the model after transforming the data:
 make model_build
 ```
 
+### Track Optuna tuning with MLflow
+
+The tuning run creates an MLflow parent run for the Optuna study and one
+nested child run per trial. Each child run records the trial's sampled
+hyperparameters and mean cross-validation score. The parent run records the
+best parameters, best score, and the winning trial's MLflow run ID.
+When `save_best_model` is called, it also logs the fitted estimator as an
+MLflow model and registers it under the model name
+`IRISClassificationModel`.
+
+By default, runs are stored in the local `mlflow.db` SQLite database. Set
+`MLFLOW_TRACKING_URI` to use another MLflow tracking server:
+
+```bash
+MLFLOW_TRACKING_URI=http://127.0.0.1:5000 uv run python -m src.pipelines.model_training
+```
+
+To inspect the local runs, start the MLflow UI:
+
+```bash
+uv run mlflow ui --backend-store-uri sqlite:///mlflow.db
+```
+
 ## Run the API
 
 ```bash
