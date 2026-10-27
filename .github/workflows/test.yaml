@@ -3,6 +3,6 @@ on: push
 jobs:
   test_code:
     runs-on: ubuntu-latest
-      steps:
-        - name: Testing code
+    steps:
+        - name: Testing 
           run: pytest tests/
