@@ -59,10 +59,10 @@ MLflow model and registers it under the model name
 `IRISClassificationModel`.
 
 By default, runs are stored in the local `mlflow.db` SQLite database. Set
-`MLFLOW_TRACKING_URI` to use another MLflow tracking server:
+`MLFLOW_TRACKING_URI` to use another MLflow tracking server: MLFLOW_TRACKING_URI=http://127.0.0.1:5000 
 
 ```bash
-MLFLOW_TRACKING_URI=http://127.0.0.1:5000 uv run python -m src.pipelines.model_training
+uv run python -m src.pipelines.model_training
 ```
 
 To inspect the local runs, start the MLflow UI:
